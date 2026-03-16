@@ -134,4 +134,4 @@ pip install -e ".[all]"
 
 ## Provenance
 
-Extracted from [cort-voc-db](https://github.com/HoekR/cort-voc-db), a research project on Dutch VOC-era records at the Huygens Instituut.
+This is made for various research projects at the Huygens Instituut.
