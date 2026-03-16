@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hist-text-utils"
+version = "0.1.0"
+description = "Reusable utilities for historical text analysis: KWIC, embeddings, clustering, LLM backends"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Rik Hoekstra" }
+]
+keywords = ["nlp", "historical-text", "kwic", "embeddings", "dutch"]
+
+# ── Core dependencies (always required) ────────────────────────────────────────
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "scikit-learn>=1.3",    # TF-IDF / SVD fallback, KMeans fallback
+]
+
+[project.optional-dependencies]
+# pip install hist-text-utils[embeddings]
+embeddings = [
+    "torch",
+    "transformers",
+    "huggingface-hub",
+    "tokenizers",
+]
+
+# pip install hist-text-utils[sbert]
+sbert = [
+    "sentence-transformers>=2.0",
+]
+
+# pip install hist-text-utils[cluster]
+cluster = [
+    "hdbscan",
+    "umap-learn",
+]
+
+# pip install hist-text-utils[llm]
+llm = [
+    "ollama",
+]
+
+# pip install hist-text-utils[openai]
+openai = [
+    "openai>=1.0",
+]
+
+# pip install hist-text-utils[viz]
+viz = [
+    "matplotlib",
+    "seaborn",
+]
+
+# Install everything:  pip install hist-text-utils[all]
+all = [
+    "hist-text-utils[embeddings,sbert,cluster,llm,openai,viz]",
+]
+
+[project.urls]
+Repository = "https://github.com/HoekR/hist-text-utils"
+
+[tool.hatch.build.targets.wheel]
+packages = ["hist_text_utils"]
